@@ -7,16 +7,20 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.parseData = exports.fetchWeather = void 0;
 const URL = 'https://api.open-meteo.com/v1/forecast?';
+/**
+ * @param lat
+ * @param long
+ * @returns A promise of WeatherData
+ */
 const fetchWeather = async (lat, long) => {
     try {
-        const res = await fetch('https://api.open-meteo.com/v1/forecast?' + `latitude=${lat}&longitude=${long}`);
+        const res = await fetch('https://api.open-meteo.com/v1/forecast?' + `latitude=${lat}&longitude=${long}` // Feels like there's a better way to do this
+        );
         if (!res.ok) {
             throw new Error(`HTTP Error: status: ${res.status}`);
         }
         const data = await res.json();
-        const parsedData = (0, exports.parseData)(data);
-        console.log('Parsed weather data: ', parsedData);
-        return parsedData;
+        return (0, exports.parseData)(data);
     }
     catch (e) {
         if (e instanceof Error) {
@@ -28,8 +32,11 @@ const fetchWeather = async (lat, long) => {
     }
 };
 exports.fetchWeather = fetchWeather;
+/**
+ * @param data
+ * @returns a validated WeatherData object or an error
+ */
 const parseData = (data) => {
-    // Validate and transform data
     if (typeof data.latitude === 'number' &&
         typeof data.longitude === 'number' &&
         typeof data.generationtime_ms === 'number' &&
@@ -52,6 +59,48 @@ const parseData = (data) => {
     }
 };
 exports.parseData = parseData;
+/**
+ * Implement a WeatherApp class with the following methods:
+ * displayWeater - displays API response in user-friendly format
+ * handleError - displays an error message if the fetch fails
+ */
+class WeatherApp {
+    constructor(lat, long) {
+        this.lat = lat;
+        this.long = long;
+    }
+    async displayWeather() {
+        try {
+            const weatherData = await (0, exports.fetchWeather)(this.lat, this.long);
+            this.showWeather(weatherData);
+        }
+        catch (error) {
+            if (error instanceof Error) {
+                this.handleError(error);
+            }
+        }
+    }
+    showWeather(data) {
+        const boldGreen = '\x1b[1m\x1b[32m';
+        const reset = '\x1b[0m';
+        console.log('\n>>> Weather Information <<<');
+        console.log(`${boldGreen}Latitude:${reset} ${data.latitude}`);
+        console.log(`${boldGreen}Longitude:${reset} ${data.longitude}`);
+        console.log(`${boldGreen}Generation Time (ms):${reset} ${data.generationtime_ms}`);
+        console.log(`${boldGreen}UTC Offset (seconds):${reset} ${data.utc_offset_seconds}`);
+        console.log(`${boldGreen}Timezone:${reset} ${data.timezone}`);
+        console.log(`${boldGreen}Timezone Abbreviation:${reset} ${data.timezone_abbreviation}`);
+        console.log(`${boldGreen}Elevation (meters):${reset} ${data.elevation}\n`);
+    }
+    handleError(error) {
+        console.error('Failed to fetch weather data: ', error.message);
+    }
+}
+// Test success implementation
+const app = new WeatherApp(51.5085, -0.1257);
+app.displayWeather();
+// Test error implementation
+// const failedFetch = new WeatherApp('s', 's');
+// failedFetch.displayWeather();
 // npx tsc
 // node dist/services/weatherService.js
-console.log((0, exports.fetchWeather)(51.5085, -0.1257));

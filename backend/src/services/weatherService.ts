@@ -30,9 +30,7 @@ export const fetchWeather = async (lat: number, long: number): Promise<WeatherDa
       throw new Error(`HTTP Error: status: ${res.status}`);
     }
     const data: WeatherData = await res.json();
-    const parsedData = parseData(data);
-    console.log('Parsed weather data: ', parsedData);
-    return parsedData;
+    return parseData(data);
   } catch (e) {
     if (e instanceof Error) {
       throw new Error(e.message || 'Unexpected error');
@@ -70,6 +68,58 @@ export const parseData = (data: any): WeatherData => {
   }
 };
 
+/**
+ * Implement a WeatherApp class with the following methods:
+ * displayWeater - displays API response in user-friendly format
+ * handleError - displays an error message if the fetch fails
+ */
+
+class WeatherApp {
+  private lat: number;
+  private long: number;
+
+  constructor(lat: number, long: number) {
+    this.lat = lat;
+    this.long = long;
+  }
+
+  public async displayWeather(): Promise<void> {
+    try {
+      const weatherData = await fetchWeather(this.lat, this.long);
+      this.showWeather(weatherData);
+    } catch (error) {
+      if (error instanceof Error) {
+        this.handleError(error);
+      }
+    }
+  }
+
+  private showWeather(data: WeatherData): void {
+    const boldGreen = '\x1b[1m\x1b[32m';
+    const reset = '\x1b[0m';
+
+    console.log('\n>>> Weather Information <<<');
+    console.log(`${boldGreen}Latitude:${reset} ${data.latitude}`);
+    console.log(`${boldGreen}Longitude:${reset} ${data.longitude}`);
+    console.log(`${boldGreen}Generation Time (ms):${reset} ${data.generationtime_ms}`);
+    console.log(`${boldGreen}UTC Offset (seconds):${reset} ${data.utc_offset_seconds}`);
+    console.log(`${boldGreen}Timezone:${reset} ${data.timezone}`);
+    console.log(`${boldGreen}Timezone Abbreviation:${reset} ${data.timezone_abbreviation}`);
+    console.log(`${boldGreen}Elevation (meters):${reset} ${data.elevation}\n`);
+  }
+
+  private handleError(error: Error): void {
+    console.error('Failed to fetch weather data: ', error.message);
+  }
+}
+
+// Test success implementation
+const app = new WeatherApp(51.5085, -0.1257);
+app.displayWeather();
+
+// Test error implementation
+// const failedFetch = new WeatherApp('s', 's');
+// failedFetch.displayWeather();
+
 // npx tsc
 // node dist/services/weatherService.js
-console.log(fetchWeather(51.5085, -0.1257));
