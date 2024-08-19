@@ -1,4 +1,8 @@
 /**
+ * write a function that will receive a single parameter, an array of ints. Each element of the array is an integer in the range -100,000 to 100,000. Max length of array is 10,000. The func will return the smallest positive integer which is not in the array
+ */
+
+/**
  * @param array
  * @returns the smallest missing integer within the passed array
  * @satisfies O(n) time and space
