@@ -4,7 +4,7 @@
 
 /**
  * @param array
- * @returns the smallest missing integer within the passed array
+ * @returns the smallest missing integer within the passed array, if array is empty returns 0
  * @satisfies O(n) time and space
  */
 export const smallestMissingInteger = (array: number[]): number => {
