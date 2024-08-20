@@ -26,8 +26,8 @@ Within each directory there will be a readme with instructions on how to run eac
 
 ## Weather Service
 
-[WeatherApp Service]()
+[WeatherApp Service](https://github.com/ASproson/experian/blob/main/backend/src/services/weatherService.ts)
 
 ## Weather App
 
-[Weather App]()
+[Weather App](https://github.com/ASproson/experian/tree/main/frontend/src)
