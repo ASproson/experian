@@ -7,6 +7,10 @@ interface InputProps {
   placeholder: string;
   onChange: Dispatch<SetStateAction<string>>;
 }
+
+/**
+ * @returns Generic input element that accepts an onChange state handler
+ */
 export const Input = ({ type, htmlFor, disabled, placeholder, onChange }: InputProps) => {
   return (
     <label htmlFor={htmlFor}>
