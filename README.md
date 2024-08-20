@@ -16,13 +16,13 @@ Within each directory there will be a readme with instructions on how to run eac
 
 ## Smallest Missing Integer
 
-- [Smallest Missing Integer]()
-- [Smallest Missing Integer Test]()
+- [Smallest Missing Integer](https://github.com/ASproson/experian/blob/main/backend/src/smallestMissingInteger.ts)
+- [Smallest Missing Integer Test](https://github.com/ASproson/experian/blob/main/backend/src/__tests__/smallestMissingInteger.test.ts)
 
 ## Most Common Consecutive Repeated Array Value
 
-- [Most Common Consecutive Repeated Array Value]()
-- [Most Common Consecutive Repeated Array Value Test]()
+- [Most Common Consecutive Repeated Array Value](https://github.com/ASproson/experian/blob/main/backend/src/mostCommonRepeatedArrayValue.ts)
+- [Most Common Consecutive Repeated Array Value Test](https://github.com/ASproson/experian/blob/main/backend/src/__tests__/mostCommonRepeatedArray.test.ts)
 
 ## Weather Service
 
