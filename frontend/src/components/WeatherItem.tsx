@@ -13,12 +13,30 @@ export const WeatherItem = ({
 }: Partial<WeatherData>) => {
   return (
     <div>
-      <p>Latitude: {latitude}</p>
-      <p>Longitude: {longitude}</p>
-      <p>Generation time (ms): {generationtime_ms}</p>
-      <p>UTC Offset (s): {utc_offset_seconds}</p>
-      <p>Timezone: {timezone}</p>
-      <p>Elevation: {elevation}</p>
+      <p>
+        <span className="font-bold">Latitude: </span>
+        {latitude}
+      </p>
+      <p>
+        <span className="font-bold">Longitude: </span>
+        {longitude}
+      </p>
+      <p>
+        <span className="font-bold">Generation time (ms): </span>
+        {generationtime_ms}
+      </p>
+      <p>
+        <span className="font-bold">UTC Offset (s): </span>
+        {utc_offset_seconds}
+      </p>
+      <p>
+        <span className="font-bold">Timezone: </span>
+        {timezone}
+      </p>
+      <p>
+        <span className="font-bold">Elevatio: </span>
+        {elevation}
+      </p>
     </div>
   );
 };
