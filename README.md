@@ -6,7 +6,7 @@ This repo provides my solutions to the Experian technical test, completed using 
 
 To run the repo locally please:
 
-> `git clone `
+> `git clone https://github.com/ASproson/experian.git`
 
 And then cd into each directory and run:
 
@@ -28,6 +28,15 @@ Within each directory there will be a readme with instructions on how to run eac
 
 - [WeatherApp Service](https://github.com/ASproson/experian/blob/main/backend/src/services/weatherService.ts)
 
+Example output:
+
+![Screenshot 2024-08-20 at 10 46 58](https://github.com/user-attachments/assets/c3171233-3c87-4aaf-a281-6423c731e2cc)
+
+
 ## Weather App
 
 - [Weather App](https://github.com/ASproson/experian/tree/main/frontend/src)
+
+Example output:
+
+![Screenshot 2024-08-20 at 10 44 57](https://github.com/user-attachments/assets/a519a72f-273a-4941-9817-e6f37ce3d11c)
