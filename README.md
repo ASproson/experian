@@ -16,13 +16,13 @@ Within each directory there will be a readme with instructions on how to run eac
 
 ## Smallest Missing Integer
 
-[Smallest Missing Integer]()
-[Smallest Missing Integer Test]()
+- [Smallest Missing Integer]()
+- [Smallest Missing Integer Test]()
 
 ## Most Common Consecutive Repeated Array Value
 
-[Most Common Consecutive Repeated Array Value]()
-[Most Common Consecutive Repeated Array Value Test]()
+- [Most Common Consecutive Repeated Array Value]()
+- [Most Common Consecutive Repeated Array Value Test]()
 
 ## Weather Service
 
